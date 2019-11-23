@@ -1,0 +1,78 @@
+body {
+
+}
+
+h1 {
+	font-size: 2.5rem;
+	line-height: 3.5rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+.center-title {
+	text-align: center;
+}
+
+.mdl-layout__header-row {
+	padding-left: 2rem;
+}
+
+.mdl-layout__header-row a {
+	color: #fff;
+}
+
+.mdl-layout__header-row .iconify {
+	padding: 10px;
+}
+
+.transcript_page {
+	padding: 2rem;
+}
+
+.large_search_area {
+	background-color: #2e2e2e;
+	text-align: center;
+	padding: 100px;
+	color: #fff;
+}
+
+.large_search_area #keyword_search {
+	width: 60%;
+	height: 30px;
+	boarder: 0px;
+	margin: 15px;
+}
+
+.single-result {
+	padding: 15px;
+}
+
+.single-result .title {
+	line-height: 2.2rem;
+}
+
+/* Transcirpt Styles */
+
+transcript {
+	line-height: 2rem;
+}
+
+title {
+    display:block !important;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    margin: 10px 0px;
+}
+
+speech {
+	display:block;
+	margin-bottom: 10px;
+}
+
+speech mp, speech agency {
+	font-weight: bold;
+	font-size: 1.3rem;
+	display: block;
+}
