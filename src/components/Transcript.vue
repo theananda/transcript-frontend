@@ -9,7 +9,9 @@
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <div class="search_warpper" v-if="keyword">
-            Keyword : <strong>{{ keyword }}</strong>
+            Keyword : <strong>{{ keyword }}</strong> 1/20 
+            <iconify-icon data-icon="mdi:chevron-up" width="1.5rem" height="1.5rem"></iconify-icon>
+            <iconify-icon data-icon="mdi:chevron-down" width="1.5rem" height="1.5rem"></iconify-icon>
           </div>
         </div>
       </header>
