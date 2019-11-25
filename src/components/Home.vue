@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="large_search_area">
-      <h2>Paliament Transcript</h2>
+      <h2>Parliamentary Transcripts</h2>
       <input type="text" name="search" id="keyword_search" v-model="keyword"> 
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
     </div>
@@ -39,6 +39,8 @@ export default {
     if (this.$route.params.keyword) {
       this.keyword = this.$route.params.keyword;
       this.getResult();
+    } else {
+      this.keyword = '';
     }
   },
   watch: {
