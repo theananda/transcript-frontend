@@ -20,7 +20,8 @@
         <div class="results_count">Results : {{ result_count }}</div>
       </div>
       <spinner v-if="loading"></spinner>
-      <div class="mdl-cell mdl-cell--3-col" v-for="result in results" v-bind:key="result._id">
+      <div class="mdl-cell mdl-cell--12-col" v-if="result_count == 0 && loading == false">No Results Found!</div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
           <div class="mdl-card mdl-shadow--4dp single-result">
             <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
               <h5 class="title">{{ result.title }}</h5>
