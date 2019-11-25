@@ -53,6 +53,10 @@ a {
 	line-height: 2.2rem;
 }
 
+.spinner {
+	margin: auto;
+}
+
 /* Transcirpt Styles */
 
 transcript {

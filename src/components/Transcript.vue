@@ -19,6 +19,7 @@
         <div class="page-content">
            <div class="mdl-grid">
                <div class="mdl-cell mdl-cell--12-col">
+                    <spinner v-if="loading"></spinner>
                     <h1 class="center-title">{{ this.data.title }}</h1>
                     <div class="transcript_wrapper" v-html=this.data.transcript></div>
                </div>
@@ -32,14 +33,19 @@
 
 import Axios from 'axios'
 import config from '@/config/index.js'
+import {Jumper} from 'vue-loading-spinner'
 
 export default {
     name: 'Transcript',
+    components: {
+      'spinner' : Jumper
+    },
     data() {
         return {
             id : this.$route.params.id,
             data: {},
-            keyword: this.$route.params.keyword
+            keyword: this.$route.params.keyword,
+            loading: true
         }
     },
     mounted() {
@@ -51,6 +57,7 @@ export default {
             Axios.get(api_url)
               .then(response => {
                 this.data = response.data;
+                this.loading = false;
             });
         }
     }
