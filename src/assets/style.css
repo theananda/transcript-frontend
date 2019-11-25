@@ -79,6 +79,14 @@ a {
 	margin: auto;
 }
 
+@media (max-width: 481px) {
+  
+  .large_search_area #keyword_search {
+  	width: 100%;
+  }
+  
+}
+
 /* Transcirpt Styles */
 
 transcript {
