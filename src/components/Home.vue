@@ -9,6 +9,10 @@
           <span class="mdl-chip__text mdl-color-text--white">{{ error }}</span>
         </span>
       </div>
+      <span class="bg_attr">
+        Photo by Htoo Tay Zar [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:Myanmar-Lower-House-Parliament.jpg">via Wikimedia Commons</a>  
+      </span>
+      
     </div>
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">

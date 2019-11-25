@@ -32,10 +32,24 @@ a {
 }
 
 .large_search_area {
-	background-color: #2e2e2e;
 	text-align: center;
 	padding: 100px;
 	color: #fff;
+	background-color: #2e2e2e;
+	position: relative;
+	z-index: 0;
+}
+
+.large_search_area::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/0/05/Myanmar-Lower-House-Parliament.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  z-index: -1;
 }
 
 .large_search_area #keyword_search {
@@ -43,6 +57,14 @@ a {
 	height: 30px;
 	boarder: 0px;
 	margin: 15px;
+	z-index: 1;
+}
+
+.large_search_area .bg_attr {
+	font-size: 0.8rem;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }
 
 .single-result {
