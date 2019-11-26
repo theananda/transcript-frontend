@@ -2,7 +2,7 @@
   <div class="container">
     <div class="large_search_area">
       <h2>Parliamentary Transcripts</h2>
-      <input type="text" name="search" id="keyword_search" v-model="keyword"> 
+      <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
       <div class="error">
         <span class="mdl-chip mdl-color--red" v-if="error">
@@ -11,8 +11,7 @@
       </div>
       <span class="bg_attr">
         Photo by Htoo Tay Zar [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:Myanmar-Lower-House-Parliament.jpg">via Wikimedia Commons</a>  
-      </span>
-      
+      </span> 
     </div>
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">
@@ -20,7 +19,7 @@
         <div class="results_count">Results : {{ result_count }}</div>
       </div>
       <spinner v-if="loading"></spinner>
-      <div class="mdl-cell mdl-cell--12-col" v-if="result_count == 0 && loading == false">No Results Found!</div>
+      <div class="mdl-cell mdl-cell--12-col" v-if="show_no_result">No Results Found!</div>
       <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
           <div class="mdl-card mdl-shadow--4dp single-result">
             <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
@@ -48,8 +47,9 @@ export default {
       loading: false,
       keyword: '',
       results: [],
-      result_count: 0,
-      error: ''
+      result_count: '',
+      error: '',
+      show_no_result: false
     }
   },
   beforeMount() {
@@ -75,6 +75,9 @@ export default {
             this.results = response.data.data;
             this.result_count = response.data.count;
             this.loading = false;
+            if (response.data.count == 0) {
+              this.show_no_result = true;
+            }
           },
           (error) => {
             this.error = error;
@@ -96,6 +99,7 @@ export default {
       this.results = [];
       this.error = '';
       this.result_count = 0;
+      this.show_no_result = false;
     } 
   }
 }
