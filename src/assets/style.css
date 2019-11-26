@@ -105,6 +105,15 @@ speech {
 	margin-bottom: 10px;
 }
 
+speech[type="speaker"] {
+	font-style: italic;
+	font-weight: bold;
+}
+
+speech[type="speaker"]::before {
+	content: "ဥက္ကဌ။ ။";
+}
+
 speech mp, speech agency {
 	font-weight: bold;
 	font-size: 1.3rem;
