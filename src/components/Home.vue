@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="large_search_area">
-      <h2>Parliamentary Transcripts</h2>
+      <h2>လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</h2>
       <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
       <div class="error">
