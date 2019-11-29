@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap');
 
 @font-face {
   font-family: 'NotoSan';
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: 'NotoSan','Open Sans', sans-serif;
+  font-family: 'NotoSan','Raleway', sans-serif;
   font-size: 1rem;
 }
 
@@ -22,6 +22,7 @@ h1 {
 
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'MyanmarSabae', 'Oswald', sans-serif;
+	color: #ff6e40;
 }
 
 a {
@@ -34,10 +35,6 @@ a {
 
 .mdl-layout__header-row {
 	padding-left: 2rem;
-}
-
-.mdl-layout__header-row a {
-	color: #fff;
 }
 
 .mdl-layout__header-row .iconify {
@@ -116,6 +113,7 @@ title {
     font-size: 1.5rem;
     line-height: 2.5rem;
     margin: 10px 0px;
+    color: #ff6e40;
 }
 
 speech {
@@ -129,6 +127,6 @@ speech[type="speaker"]::before {
 
 speech mp, speech agency {
 	font-weight: bold;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	display: block;
 }
