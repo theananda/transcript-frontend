@@ -2,18 +2,22 @@
   <div class="container">
     <div class="large_search_area">
       <h2>လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</h2>
+      <div class="alpha_label">[ Alpha Version ]</div>
       <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
+      <div class="alpha">ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက အနူးအညွှန့်တောင်းပန်အပ်ပါသည်။</div>
       <div class="error">
         <span class="mdl-chip mdl-color--red" v-if="error">
           <span class="mdl-chip__text mdl-color-text--white">{{ error }}</span>
         </span>
       </div>
       <span class="bg_attr">
-        Photo by Htoo Tay Zar [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:Myanmar-Lower-House-Parliament.jpg">via Wikimedia Commons</a>  
+        Photo by Aung Htun Linn  
       </span> 
     </div>
-    <div class="mdl-grid">
+    <legislature v-if="this.$route.name == 'home'"/>
+    <browse v-if="this.$route.name == 'browse'"/>
+    <div class="mdl-grid" v-if="keyword">
       <div class="mdl-cell mdl-cell--12-col">
         <div class="results_wrapper">Search Keyword : {{keyword}}</div>
         <div class="results_count">Results : {{ result_count }}</div>
@@ -35,12 +39,16 @@
 
 import Axios from 'axios'
 import config from '@/config/index.js'
+import ByLegislature from '@/components/ByLegislature'
 import {Jumper} from 'vue-loading-spinner'
+import Browse from '@/components/Browse.vue'
 
 export default {
   name: 'Home',
   components: {
-    'spinner' : Jumper
+    'spinner' : Jumper,
+    'legislature' : ByLegislature,
+    'browse' : Browse
   },
   data () {
     return {
@@ -68,7 +76,7 @@ export default {
   },
   methods: {
     getResult() {
-      const api_url = config.api_url + "/transcripts?keyword=" + this.keyword;
+      const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
       Axios.get(api_url)
         .then(
           (response) => {

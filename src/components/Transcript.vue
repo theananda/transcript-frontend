@@ -2,7 +2,7 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <router-link :to="{ name: 'search', params: { keyword: keyword }}">
+          <router-link :to="backLink">
             <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
             Back to all results
           </router-link>
@@ -60,6 +60,15 @@ export default {
                 this.loading = false;
             });
         }
+    },
+    computed: {
+      backLink() {
+        if (this.keyword) {
+          return { name: 'search', params: { keyword: this.keyword }}
+        } else {
+          return { name: 'home' }
+        }
+      }
     }
 }
 

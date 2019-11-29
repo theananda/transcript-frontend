@@ -26,6 +26,11 @@ export default new Router({
       name: 'search_transcript',
       path: '/search/:keyword/transcript/:id',
       component: Transcript
+    },
+    {
+      name: 'browse',
+      path: '/browse/:legislature/:term/:session',
+      component: Home
     }
   ]
 })

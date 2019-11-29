@@ -20,6 +20,26 @@ h1 {
 	line-height: 3.5rem;
 }
 
+h2 {
+	font-size: 2.3rem;
+}
+
+h3 {
+	font-size: 2.1rem;
+}
+
+h4 {
+	font-size: 2rem;
+}
+
+h5 {
+	font-size: 1.8rem;
+}
+
+h5 {
+	font-size: 1.6rem;
+}
+
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'MyanmarSabae', 'Oswald', sans-serif;
 	color: #ff6e40;
