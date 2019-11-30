@@ -117,10 +117,43 @@ a {
 }
 
 @media (max-width: 481px) {
+
+	.large_search_area {
+		padding: 50px;
+	}
   
-  .large_search_area #keyword_search {
-  	width: 100%;
-  }
+  	.large_search_area #keyword_search {
+  		width: 100%;
+  		margin: 15px 0px;
+  	}
+
+  	.alpha {
+  		margin-top: 15px;
+  	}
+
+  	h1 {
+  		font-size: 2rem;
+  	}
+
+  	h2 {
+  		font-size: 1.8rem;
+  	}
+
+  	h3 {
+  		font-size: 1.6rem;
+  	}
+
+  	h4 {
+  		font-size: 1.4rem;
+  	}
+
+  	h5 {
+  		font-size: 1.2rem;
+  	}
+
+  	h5 {
+  		font-size: 1.1rem;
+  	}
   
 }
 
