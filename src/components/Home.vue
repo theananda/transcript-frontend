@@ -5,7 +5,7 @@
       <div class="alpha_label">[ Alpha Version ]</div>
       <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
-      <div class="alpha">ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက အနူးအညွှန့်တောင်းပန်အပ်ပါသည်။</div>
+      <div class="alpha">ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။</div>
       <div class="error">
         <span class="mdl-chip mdl-color--red" v-if="error">
           <span class="mdl-chip__text mdl-color-text--white">{{ error }}</span>
