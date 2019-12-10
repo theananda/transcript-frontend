@@ -82,7 +82,7 @@ export default {
         .then(
           (response) => {
             this.results = response.data.data;
-            this.result_count = response.data.count;
+            this.result_count = response.data.pagination.total;
             this.loading = false;
             if (response.data.count == 0) {
               this.show_no_result = true;
