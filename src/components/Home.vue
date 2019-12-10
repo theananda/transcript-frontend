@@ -17,7 +17,7 @@
     </div>
     <legislature v-if="this.$route.name == 'home'"/>
     <browse v-if="this.$route.name == 'browse'"/>
-    <div class="mdl-grid" v-if="keyword">
+    <div class="mdl-grid" v-if="this.$route.name == 'search'">
       <div class="mdl-cell mdl-cell--12-col">
         <div class="results_wrapper">Search Keyword : {{keyword}}</div>
         <div class="results_count">Results : {{ result_count }}</div>
