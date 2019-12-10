@@ -76,6 +76,7 @@ export default {
   },
   methods: {
     getResult() {
+      this.keyword = this.keyword.trim();
       const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
       Axios.get(api_url)
         .then(
