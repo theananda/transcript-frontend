@@ -95,6 +95,7 @@ a {
 	boarder: 0px;
 	margin: 15px;
 	z-index: 1;
+  font-family: 'NotoSan';
 }
 
 .large_search_area .bg_attr {
