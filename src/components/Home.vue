@@ -31,6 +31,7 @@
             </router-link>
           </div>  
       </div>
+      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
     </div>
   </div>
 </template>
@@ -42,13 +43,15 @@ import config from '@/config/index.js'
 import ByLegislature from '@/components/ByLegislature'
 import {Jumper} from 'vue-loading-spinner'
 import Browse from '@/components/Browse.vue'
+import InfiniteLoading from 'vue-infinite-loading'
 
 export default {
   name: 'Home',
   components: {
     'spinner' : Jumper,
     'legislature' : ByLegislature,
-    'browse' : Browse
+    'browse' : Browse,
+    'infinite-loading' : InfiniteLoading
   },
   data () {
     return {
@@ -57,7 +60,8 @@ export default {
       results: [],
       result_count: '',
       error: '',
-      show_no_result: false
+      show_no_result: false,
+      page: 1
     }
   },
   beforeMount() {
@@ -109,6 +113,27 @@ export default {
       this.error = '';
       this.result_count = 0;
       this.show_no_result = false;
+    },
+    infiniteHandler($state) {
+      const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
+      Axios.get(api_url, {
+        params: {
+          page: this.page,
+        },
+      }).then(
+        (response) => {
+          if (response.data.data) {
+            this.page += 1;
+            this.results.push(...response.data.data);
+            $state.loaded();
+          } else {
+            $state.complete();
+          }
+        },
+        (error) => {
+          this.error = error;
+        }
+      );
     } 
   }
 }
