@@ -2,6 +2,12 @@
     <div class="content_wrapper mdl-grid">
         <spinner v-if="loading"></spinner>
         <div class="mdl-cell mdl-cell--12-col">
+            <router-link
+              v-if="$routerHistory.hasPrevious()"
+              :to="{ path: $routerHistory.previous().path }">
+              <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
+              Back to home
+          </router-link>
             <h2>{{ pageTitle }}</h2>    
         </div>
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
