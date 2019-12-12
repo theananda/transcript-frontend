@@ -122,7 +122,7 @@ export default {
         },
       }).then(
         (response) => {
-          if (response.data.data) {
+          if (response.data.data.length) {
             this.page += 1;
             this.results.push(...response.data.data);
             $state.loaded();
