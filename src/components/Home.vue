@@ -27,6 +27,9 @@
       <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
           <div class="mdl-card mdl-shadow--4dp single-result">
             <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
+              <span :class="getLegislatureChipClass(result.legislature)">
+                <span class="mdl-chip__text">{{ getLegislatureName(result.legislature) }}</span>
+              </span>
               <h5 class="title">{{ result.title }}</h5>
             </router-link>
           </div>  
@@ -61,7 +64,12 @@ export default {
       result_count: '',
       error: '',
       show_no_result: false,
-      page: 1
+      page: 1,
+      legislatures : {
+        'all' : 'လွှတ်တော်အားလုံး',
+        'lower' : 'ပြည်သူ့လွှတ်တော်',
+        'upper' : 'အမျိုးသားလွှတ်တော်'
+      }
     }
   },
   beforeMount() {
@@ -134,7 +142,17 @@ export default {
           this.error = error;
         }
       );
-    } 
+    },
+    getLegislatureName(key) {
+        return this.legislatures[key];
+    },
+    getLegislatureChipClass(key) {
+      if (key == 'upper') {
+        return 'mdl-chip mdl-color--yellow';
+      } else {
+        return 'mdl-chip mdl-color--amber';
+      }
+    }
   }
 }
 </script>
