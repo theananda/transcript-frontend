@@ -65,6 +65,10 @@ a {
 	padding: 2rem;
 }
 
+.text-highlight {
+  background-color: #ffeb3b;
+}
+
 .large_search_area {
 	text-align: center;
 	padding: 100px;
@@ -111,6 +115,10 @@ a {
 
 .single-result .title {
 	line-height: 2.2rem;
+}
+
+.keyword_warpper {
+  text-align: right;
 }
 
 .spinner {
