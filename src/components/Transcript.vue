@@ -29,8 +29,8 @@
                </div>
            </div>
         </div>
+        <site-footer></site-footer>
       </main>
-      <site-footer></site-footer>
     </div>
 </template>
 
