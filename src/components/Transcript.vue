@@ -23,7 +23,9 @@
                <div class="mdl-cell mdl-cell--12-col">
                     <spinner v-if="loading"></spinner>
                     <h1 class="center-title">{{ this.data.title }}</h1>
+                    <div class="transcript_wrapper" v-html=this.data.preface></div>
                     <div class="transcript_wrapper" v-html=this.data.transcript></div>
+                    <div class="transcript_wrapper" v-html=this.data.postface></div>
                </div>
            </div>
         </div>

@@ -164,6 +164,9 @@ a {
 }
 
 /* Transcirpt Styles */
+.transcript_wrapper {
+  line-height: 2.5rem;
+}
 
 transcript {
 	line-height: 2.5rem;
