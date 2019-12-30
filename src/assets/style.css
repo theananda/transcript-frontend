@@ -158,6 +158,11 @@ a {
   
 }
 
+.mdl-mini-footer .footer-content {
+  text-align: center;
+  width: 100%;
+}
+
 /* Transcirpt Styles */
 
 transcript {

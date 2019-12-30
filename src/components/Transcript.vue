@@ -28,6 +28,7 @@
            </div>
         </div>
       </main>
+      <site-footer></site-footer>
     </div>
 </template>
 
@@ -36,11 +37,13 @@
 import Axios from 'axios'
 import config from '@/config/index.js'
 import {Jumper} from 'vue-loading-spinner'
+import SiteFooter from '@/components/partials/Footer'
 
 export default {
     name: 'Transcript',
     components: {
-      'spinner' : Jumper
+      'spinner' : Jumper,
+      'site-footer' : SiteFooter
     },
     data() {
         return {
