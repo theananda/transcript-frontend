@@ -36,6 +36,7 @@
       </div>
       <infinite-loading @infinite="infiniteHandler"></infinite-loading>
     </div>
+    <site-footer></site-footer>
   </div>
 </template>
 
@@ -47,14 +48,16 @@ import ByLegislature from '@/components/ByLegislature'
 import {Jumper} from 'vue-loading-spinner'
 import Browse from '@/components/Browse.vue'
 import InfiniteLoading from 'vue-infinite-loading'
+import SiteFooter from '@/components/partials/Footer'
 
 export default {
   name: 'Home',
   components: {
     'spinner' : Jumper,
-    'legislature' : ByLegislature,
     'browse' : Browse,
-    'infinite-loading' : InfiniteLoading
+    'infinite-loading' : InfiniteLoading,
+    'legislature' : ByLegislature,
+    'site-footer' : SiteFooter
   },
   data () {
     return {

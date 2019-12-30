@@ -27,10 +27,13 @@
                <div class="mdl-cell mdl-cell--12-col">
                     <spinner v-if="loading"></spinner>
                     <h1 class="center-title">{{ this.data.title }}</h1>
+                    <div class="transcript_wrapper" v-html=this.data.preface></div>
                     <div class="transcript_wrapper" v-html=transcriptText></div>
+                    <div class="transcript_wrapper" v-html=this.data.postface></div>
                </div>
            </div>
         </div>
+        <site-footer></site-footer>
       </main>
     </div>
 </template>
@@ -41,11 +44,13 @@ import Axios from 'axios'
 import config from '@/config/index.js'
 import {Jumper} from 'vue-loading-spinner'
 import searchTextHl from 'search-text-highlight'
+import SiteFooter from '@/components/partials/Footer'
 
 export default {
     name: 'Transcript',
     components: {
-      'spinner' : Jumper
+      'spinner' : Jumper,
+      'site-footer' : SiteFooter
     },
     data() {
         return {

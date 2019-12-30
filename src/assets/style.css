@@ -61,7 +61,7 @@ a {
 	padding: 10px;
 }
 
-.transcript_page {
+.transcript_page .page-content {
 	padding: 2rem;
 }
 
@@ -166,7 +166,15 @@ a {
   
 }
 
+.mdl-mini-footer .footer-content {
+  text-align: center;
+  width: 100%;
+}
+
 /* Transcirpt Styles */
+.transcript_wrapper {
+  line-height: 2.5rem;
+}
 
 transcript {
 	line-height: 2.5rem;
