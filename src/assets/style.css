@@ -61,8 +61,13 @@ a {
 	padding: 10px;
 }
 
-.transcript_page .page-content {
+.content_wrapper {
+  min-height: 50vh;
+}
+
+.transcript_page .content_wrapper {
 	padding: 2rem;
+  min-height: 80vh;
 }
 
 .text-highlight {
@@ -115,6 +120,15 @@ a {
 
 .single-result .title {
 	line-height: 2.2rem;
+  margin-top: 0px;
+}
+
+.single-result .date-info {
+  margin-top: 10px;
+}
+
+.single-result .date-info .iconify {
+  margin-right: 5px;
 }
 
 .keyword_warpper {

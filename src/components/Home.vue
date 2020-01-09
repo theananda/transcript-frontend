@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="large_search_area">
-      <h2>လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</h2>
+      <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
       <div class="alpha_label">[ Alpha Version ]</div>
       <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
@@ -26,12 +26,16 @@
       <div class="mdl-cell mdl-cell--12-col" v-if="show_no_result">No Results Found!</div>
       <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
           <div class="mdl-card mdl-shadow--4dp single-result">
-            <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
               <span :class="getLegislatureChipClass(result.legislature)">
                 <span class="mdl-chip__text">{{ getLegislatureName(result.legislature) }}</span>
               </span>
-              <h5 class="title">{{ result.title }}</h5>
-            </router-link>
+              <p class="date-info">
+                <iconify-icon data-icon="mdi:calendar" width="1.5rem" height="1.5rem"></iconify-icon>
+                <span>{{ result.date }}</span>
+              </p>
+              <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
+                <h5 class="title">{{ result.title }}</h5>
+              </router-link>
           </div>  
       </div>
       <infinite-loading @infinite="infiniteHandler"></infinite-loading>

@@ -8,10 +8,16 @@
               <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
               Back to all results
           </router-link>
+          <router-link
+            v-else
+            :to="backLink">
+            <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
+            Back to all results
+          </router-link>
         </div>
       </header>
       <main class="mdl-layout__content transcript_page">
-        <div class="page-content">
+        <div class="content_wrapper">
            <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--12-col">
                 <div class="keyword_warpper" v-if="keyword">
@@ -84,7 +90,7 @@ export default {
         if (this.keyword) {
           return { name: 'search', params: { keyword: this.keyword }}
         } else {
-          return { name: 'home' }
+          return { name: 'browse', params: {legislature: this.data.legislature, term: this.data.term, session: this.data.session} }
         }
       },
       transcriptText() {

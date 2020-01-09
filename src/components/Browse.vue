@@ -1,17 +1,20 @@
 <template>
     <div class="content_wrapper mdl-grid">
-        <spinner v-if="loading"></spinner>
         <div class="mdl-cell mdl-cell--12-col">
             <router-link
-              v-if="$routerHistory.hasPrevious()"
-              :to="{ path: $routerHistory.previous().path }">
+              :to="{ name: 'home' }">
               <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
               Back to home
           </router-link>
             <h2>{{ pageTitle }}</h2>    
+            <spinner v-if="loading"></spinner>
         </div>
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
             <div class="mdl-card mdl-shadow--4dp single-result">
+              <p class="date-info">
+                <iconify-icon data-icon="mdi:calendar" width="1.5rem" height="1.5rem"></iconify-icon>
+                <span>{{ result.date }}</span>
+              </p>
               <router-link :to="{ name: 'transcript', params: { id: result._id }}">
                 <h5 class="title">{{ result.title }}</h5>
               </router-link>
@@ -34,7 +37,7 @@ export default {
     },
     data() {
         return {
-            loading: false,
+            loading: true,
             results: [],
             legislature : this.$route.params.legislature,
             term : this.$route.params.term,
