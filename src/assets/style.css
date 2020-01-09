@@ -61,8 +61,13 @@ a {
 	padding: 10px;
 }
 
-.transcript_page .page-content {
+.content_wrapper {
+  min-height: 50vh;
+}
+
+.transcript_page .content_wrapper {
 	padding: 2rem;
+  min-height: 80vh;
 }
 
 .large_search_area {

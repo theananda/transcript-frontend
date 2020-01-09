@@ -24,7 +24,7 @@
         </div>
       </header>
       <main class="mdl-layout__content transcript_page">
-        <div class="page-content">
+        <div class="content_wrapper">
            <div class="mdl-grid">
                <div class="mdl-cell mdl-cell--12-col">
                     <spinner v-if="loading"></spinner>
