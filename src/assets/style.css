@@ -111,6 +111,15 @@ a {
 
 .single-result .title {
 	line-height: 2.2rem;
+  margin-top: 0px;
+}
+
+.single-result .date-info {
+  margin-top: 10px;
+}
+
+.single-result .date-info .iconify {
+  margin-right: 5px;
 }
 
 .spinner {
