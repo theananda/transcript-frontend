@@ -8,6 +8,12 @@
               <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
               Back to all results
           </router-link>
+          <router-link
+            v-else
+            :to="backLink">
+            <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
+            Back to all results
+          </router-link>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <div class="search_warpper" v-if="keyword">
@@ -73,7 +79,7 @@ export default {
         if (this.keyword) {
           return { name: 'search', params: { keyword: this.keyword }}
         } else {
-          return { name: 'home' }
+          return { name: 'browse', params: {legislature: this.data.legislature, term: this.data.term, session: this.data.session} }
         }
       }
     }
