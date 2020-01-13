@@ -9,7 +9,7 @@
             <h2>{{ pageTitle }}</h2>    
             <spinner v-if="loading"></spinner>
         </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" v-for="result in results" v-bind:key="result._id">
             <div class="mdl-card mdl-shadow--4dp single-result">
               <p class="date-info">
                 <iconify-icon data-icon="mdi:calendar" width="1.5rem" height="1.5rem"></iconify-icon>

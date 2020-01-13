@@ -24,7 +24,7 @@
       </div>
       <spinner v-if="loading"></spinner>
       <div class="mdl-cell mdl-cell--12-col" v-if="show_no_result">No Results Found!</div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" v-for="result in results" v-bind:key="result._id">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" v-for="result in results" v-bind:key="result._id">
           <div class="mdl-card mdl-shadow--4dp single-result">
               <span :class="getLegislatureChipClass(result.legislature)">
                 <span class="mdl-chip__text">{{ getLegislatureName(result.legislature) }}</span>

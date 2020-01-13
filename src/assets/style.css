@@ -135,6 +135,7 @@ a {
 
 .single-result {
 	padding: 15px;
+  width: 100%;
 }
 
 .single-result .title {
