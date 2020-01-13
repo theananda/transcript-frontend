@@ -70,8 +70,27 @@ a {
   min-height: 80vh;
 }
 
+.transcript_page .keyword_warpper {
+  position: fixed;
+  padding: 10px 20px;
+  right: 0;
+  background: #fff;
+}
+
+.transcript-content-wrapper {
+  margin-top: 50px;
+}
+
+.keyword_navigator {
+  cursor: pointer;
+}
+
 .text-highlight {
   background-color: #ffeb3b;
+}
+
+.text-highlight.current {
+  background-color: #ff6e40;
 }
 
 .large_search_area {

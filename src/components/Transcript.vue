@@ -20,21 +20,21 @@
         <div class="content_wrapper">
            <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--12-col">
-                <div class="keyword_warpper" v-if="keyword">
-                  Keyword : <strong>{{ keyword }}</strong> 1/{{ keywordCount }}
-                  <a href="#">
+                <div class="keyword_warpper mdl-shadow--2dp" v-if="keyword">
+                  Keyword : <strong>{{ keyword }}</strong> {{ showPosition }}/{{ keywordCount }}
+                  <button class="mdl-button mdl-js-button mdl-button--icon keyword_navigator up" v-on:click="goToResults('up')" :disabled="jump_position == -1">
                     <iconify-icon data-icon="mdi:chevron-up" width="1.5rem" height="1.5rem"></iconify-icon>
-                  </a>
-                  <a href="#">
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-button--icon keyword_navigator down" v-on:click="goToResults('down')" :disabled="jump_position == keywordCount - 1">
                     <iconify-icon data-icon="mdi:chevron-down" width="1.5rem" height="1.5rem"></iconify-icon>
-                  </a>
+                  </button>
                 </div>
               </div>
-               <div class="mdl-cell mdl-cell--12-col">
+               <div class="mdl-cell mdl-cell--12-col transcript-content-wrapper">
                     <spinner v-if="loading"></spinner>
                     <h1 class="center-title">{{ this.data.title }}</h1>
                     <div class="transcript_wrapper" v-html=this.data.preface></div>
-                    <div class="transcript_wrapper" v-html=transcriptText></div>
+                    <div class="transcript_wrapper" id="transcript_contents" v-html=transcriptText></div>
                     <div class="transcript_wrapper" v-html=this.data.postface></div>
                </div>
            </div>
@@ -51,6 +51,7 @@ import config from '@/config/index.js'
 import {Jumper} from 'vue-loading-spinner'
 import searchTextHl from 'search-text-highlight'
 import SiteFooter from '@/components/partials/Footer'
+//import Mark from 'mark.js/dist/mark.min.js';
 
 export default {
     name: 'Transcript',
@@ -64,7 +65,9 @@ export default {
             data: {},
             keyword: this.$route.params.keyword,
             loading: true,
-            jump_position: 1
+            jump_position: -1,
+            highlighted_selector: '',
+            current_selector : ''
         }
     },
     mounted() {
@@ -79,11 +82,35 @@ export default {
                 this.loading = false;
             });
         },
-        /*goToResults(dir) {
+        goToResults(dir) {
 
-          var selector = this.$el.querySelector('qasection');
-          selector.scrollTop;
-        }*/
+          //var position;
+          
+          if (!this.highlighted_selector) {
+            this.highlighted_selector = this.$el.querySelectorAll('.text-highlight');
+          }
+
+          if (dir == 'up') {
+            this.jump_position--;
+          } else {
+            this.jump_position++;
+          }
+
+          if (this.current_selector) {
+            this.current_selector.classList.remove('current');
+          }
+
+          this.current_selector = this.highlighted_selector[this.jump_position];
+
+          this.current_selector.classList.add('current');
+
+          this.current_selector.scrollIntoView({behavior: "smooth", block: "center"});
+
+          /*position = this.current_selector.offset().top - 50;
+
+          window.scrollTo(0, position);*/
+
+        }
     },
     computed: {
       backLink() {
@@ -98,16 +125,31 @@ export default {
 
         if (this.keyword) {
           const query = this.keyword;
+
+          /*var instance = new Mark('#transcript_contents');
+
+          return instance.mark(query);*/
+
           var result = searchTextHl.highlight(transcript, query);
+
           return result;  
         }
         return transcript;
       },
       keywordCount() {
         return (this.transcriptText.match(/text-highlight/g) || []).length;
+      },
+      showPosition() {
+        return this.jump_position + 1;
       }
-
-    }
+    },
+    /*filters: {
+      highlight: function(value) {
+        const query = this.keyword;
+        const MarkInstance = new Mark(value);
+        return MarkInstance.mark(query);
+      }
+    }*/
 }
 
 </script>
