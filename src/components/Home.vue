@@ -82,8 +82,6 @@ export default {
   beforeMount() {
     if (this.$route.params.keyword) {
       this.keyword = this.$route.params.keyword;
-      this.loading = true;
-      this.getResult();
     } else {
       this.keyword = '';
     }
