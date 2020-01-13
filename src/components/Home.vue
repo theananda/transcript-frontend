@@ -86,11 +86,6 @@ export default {
       this.keyword = '';
     }
   },
-  watch: {
-    /*keyword() {
-      this.getResult();
-    }*/
-  },
   methods: {
     getResult() {
       this.keyword = this.keyword.trim();
