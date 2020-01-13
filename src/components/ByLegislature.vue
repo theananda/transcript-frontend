@@ -38,7 +38,7 @@ export default {
 					terms : [
 						{
 							number : 2,
-							name : 'ဒုတိယအကြိမ်အစည်းအဝေး',
+							name : 'ဒုတိယလွှတ်တော်သက်တမ်း',
 							sessions : [
 								{
 									number : 1,
@@ -91,7 +91,7 @@ export default {
 					terms : [
 						{
 							number : 2,
-							name : 'ဒုတိယအကြိမ်အစည်းအဝေး',
+							name : 'ဒုတိယလွှတ်တော်သက်တမ်း',
 							sessions : [
 								{
 									number : 1,
