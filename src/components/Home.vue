@@ -22,6 +22,14 @@
         <div class="results_wrapper">Search Keyword : {{keyword}}</div>
         <div class="results_count">Results : {{ result_count }}</div>
       </div>
+      <div class="mdl-cell mdl-cell--12-col fiter_sort_wrapper">
+        Filter Results : 
+        <div class="mdl-textfield mdl-js-textfield">
+            <select class="mdl-textfield__input" v-model="filter_legislature">
+              <option v-for="(name, value) in legislatures" :value=value>{{ name }}</option>
+            </select>
+        </div>
+      </div>
       <spinner v-if="loading"></spinner>
       <div class="mdl-cell mdl-cell--12-col" v-if="show_no_result">No Results Found!</div>
       <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" v-for="result in results" v-bind:key="result._id">
@@ -38,7 +46,7 @@
               </router-link>
           </div>  
       </div>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+      <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler"></infinite-loading>
     </div>
     <site-footer></site-footer>
   </div>
@@ -72,11 +80,13 @@ export default {
       error: '',
       show_no_result: false,
       page: 1,
+      filter_legislature : 'all',
       legislatures : {
         'all' : 'လွှတ်တော်အားလုံး',
         'lower' : 'ပြည်သူ့လွှတ်တော်',
         'upper' : 'အမျိုးသားလွှတ်တော်'
-      }
+      },
+      infiniteId: +new Date(),
     }
   },
   beforeMount() {
@@ -86,12 +96,23 @@ export default {
       this.keyword = '';
     }
   },
+  watch : {
+    filter_legislature : function() {
+      this.loading = true;
+      this.resetResults();
+      this.getResult();
+    }
+  },
   methods: {
     getResult() {
       this.keyword = this.keyword.trim();
       const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
-      Axios.get(api_url)
-        .then(
+      Axios.get(api_url,
+          {
+            params: {
+              legislature: this.filter_legislature
+            }
+          }).then(
           (response) => {
             this.results = response.data.data;
             this.result_count = response.data.pagination.total;
@@ -121,12 +142,16 @@ export default {
       this.error = '';
       this.result_count = 0;
       this.show_no_result = false;
+      this.page = 1;
+      this.infiniteId += 1;
     },
     infiniteHandler($state) {
+      this.keyword = this.keyword.trim();
       const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
       Axios.get(api_url, {
         params: {
-          page: this.page,
+          legislature: this.filter_legislature,
+          page: this.page
         },
       }).then(
         (response) => {
