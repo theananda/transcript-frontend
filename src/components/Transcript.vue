@@ -51,7 +51,6 @@ import config from '@/config/index.js'
 import {Jumper} from 'vue-loading-spinner'
 import searchTextHl from 'search-text-highlight'
 import SiteFooter from '@/components/partials/Footer'
-//import Mark from 'mark.js/dist/mark.min.js';
 
 export default {
     name: 'Transcript',
@@ -83,8 +82,6 @@ export default {
             });
         },
         goToResults(dir) {
-
-          //var position;
           
           if (!this.highlighted_selector) {
             this.highlighted_selector = this.$el.querySelectorAll('.text-highlight');
@@ -106,10 +103,6 @@ export default {
 
           this.current_selector.scrollIntoView({behavior: "smooth", block: "center"});
 
-          /*position = this.current_selector.offset().top - 50;
-
-          window.scrollTo(0, position);*/
-
         }
     },
     computed: {
@@ -125,10 +118,6 @@ export default {
 
         if (this.keyword) {
           const query = this.keyword;
-
-          /*var instance = new Mark('#transcript_contents');
-
-          return instance.mark(query);*/
 
           var result = searchTextHl.highlight(transcript, query);
 
