@@ -22,11 +22,19 @@
         <div class="results_wrapper">Search Keyword : {{keyword}}</div>
         <div class="results_count">Results : {{ result_count }}</div>
       </div>
-      <div class="mdl-cell mdl-cell--12-col fiter_sort_wrapper">
+      <div class="mdl-cell mdl-cell--6-col fiter_sort_wrapper">
         Filter Results : 
         <div class="mdl-textfield mdl-js-textfield">
             <select class="mdl-textfield__input" v-model="filter_legislature">
               <option v-for="(name, value) in legislatures" :value=value>{{ name }}</option>
+            </select>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--6-col fiter_sort_wrapper">
+        Sort by : 
+        <div class="mdl-textfield mdl-js-textfield">
+            <select class="mdl-textfield__input" v-model="sort">
+              <option v-for="(name, value) in sort_options" :value=value>{{ name }}</option>
             </select>
         </div>
       </div>
@@ -81,10 +89,15 @@ export default {
       show_no_result: false,
       page: 1,
       filter_legislature : 'all',
+      sort : 'score',
       legislatures : {
         'all' : 'လွှတ်တော်အားလုံး',
         'lower' : 'ပြည်သူ့လွှတ်တော်',
         'upper' : 'အမျိုးသားလွှတ်တော်'
+      },
+      sort_options : {
+        'score' : 'ရှာဖွေတွေ့ရှိမှုအရေအတွက်',
+        'latest' : 'နောက်ဆုံးအစည်းအဝေးမှတ်တမ်း'
       },
       infiniteId: +new Date(),
     }
@@ -101,6 +114,11 @@ export default {
       this.loading = true;
       this.resetResults();
       this.getResult();
+    },
+    sort : function() {
+      this.loading = true;
+      this.resetResults();
+      this.getResult();
     }
   },
   methods: {
@@ -110,7 +128,8 @@ export default {
       Axios.get(api_url,
           {
             params: {
-              legislature: this.filter_legislature
+              legislature: this.filter_legislature,
+              sort : this.sort
             }
           }).then(
           (response) => {
@@ -151,6 +170,7 @@ export default {
       Axios.get(api_url, {
         params: {
           legislature: this.filter_legislature,
+          sort: this.sort,
           page: this.page
         },
       }).then(
