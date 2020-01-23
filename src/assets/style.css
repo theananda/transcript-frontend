@@ -49,6 +49,19 @@ a {
 	text-decoration: none;
 }
 
+th {
+  background: #ff6e40;
+  color: #fff;
+}
+
+td {
+  text-align: center;
+}
+
+th, td {
+  padding: 10px;
+}
+
 .center-title {
 	text-align: center;
 }
