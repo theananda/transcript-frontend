@@ -9,8 +9,8 @@
             </router-link>
             <div class="mdl-layout-spacer"></div>
             <button id="about-menu"
-                    class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons mdl-color-text--orange">info</i>
+                    class="mdl-button mdl-js-button mdl-color-text--orange">
+              <i class="material-icons">info</i> <span class="mdl-layout--large-screen-only">စီမံကိန်းအကြောင်း</span>
             </button>
 
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"

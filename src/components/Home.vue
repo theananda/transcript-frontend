@@ -1,19 +1,46 @@
 <template>
   <div class="container">
     <div class="large_search_area">
-      <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
-      <div class="alpha_label">[ Alpha Version ]</div>
-      <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">ရှာဖွေပါ</button> 
-      <div class="alpha">ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။</div>
-      <div class="error">
-        <span class="mdl-chip mdl-color--red" v-if="error">
-          <span class="mdl-chip__text mdl-color-text--white">{{ error }}</span>
-        </span>
+      <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+          <div class="mdl-layout-spacer"></div>
+          <button id="about-menu"
+                  class="mdl-button mdl-js-button mdl-color-text--white">
+            <i class="material-icons mdl-color-text--white">info</i> <span class="mdl-layout--large-screen-only">စီမံကိန်းအကြောင်း</span>
+          </button>
+
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+              for="about-menu">
+              <li class="mdl-menu__item">
+                  <router-link :to="{ name: 'about' }">စီမံကိန်းအကြောင်း</router-link>
+              </li>
+              <li class="mdl-menu__item">
+                  <router-link :to="{ name: 'info' }">အချက်အလက်ရရှိနိုင်မှု အခြေအနေ</router-link>
+              </li>
+              <li class="mdl-menu__item">
+                  <router-link :to="{ name: 'faq' }">ဝက်ဘ်ဆိုဒ်အသုံးပြုပုံ</router-link>
+              </li>
+              <li class="mdl-menu__item">
+                  <router-link :to="{ name: 'history' }">လွှတ်တော်သမိုင်း မှတ်တမ်း</router-link>
+              </li>
+          </ul>
+        </div>
+      </header>
+      <div class="jumbotron-wrapper">
+        <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
+        <div class="alpha_label">[ Alpha Version ]</div>
+        <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">ရှာဖွေပါ</button> 
+        <div class="alpha">ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။</div>
+        <div class="error">
+          <span class="mdl-chip mdl-color--red" v-if="error">
+            <span class="mdl-chip__text mdl-color-text--white">{{ error }}</span>
+          </span>
+        </div>
+        <span class="bg_attr">
+          Photo by Aung Htun Linn  
+        </span> 
       </div>
-      <span class="bg_attr">
-        Photo by Aung Htun Linn  
-      </span> 
     </div>
     <legislature v-if="this.$route.name == 'home'"/>
     <browse v-if="this.$route.name == 'browse'"/>

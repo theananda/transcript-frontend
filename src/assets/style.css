@@ -95,10 +95,13 @@ a {
 
 .large_search_area {
 	text-align: center;
-	padding: 100px;
 	color: #fff;
 	background-color: rgba(0,0,0,0.3);
 	position: relative;
+}
+
+.large_search_area .jumbotron-wrapper {
+  padding: 100px;
 }
 
 .large_search_area h2 {
