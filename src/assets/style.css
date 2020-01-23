@@ -65,6 +65,10 @@ a {
   min-height: 50vh;
 }
 
+.alpha {
+  line-height: 2rem;
+}
+
 .transcript_page .content_wrapper {
 	padding: 2rem;
   min-height: 80vh;
