@@ -28,7 +28,7 @@
       </header>
       <div class="jumbotron-wrapper">
         <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
-        <div class="alpha_label">[ Alpha Version ]</div>
+        <div class="alpha_label">[ Beta Version ]</div>
         <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">ရှာဖွေပါ</button> 
         <div class="alpha">
