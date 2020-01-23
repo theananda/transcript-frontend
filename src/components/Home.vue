@@ -142,40 +142,13 @@ export default {
   },
   watch : {
     filter_legislature : function() {
-      this.loading = true;
       this.resetResults();
-      this.getResult();
     },
     sort : function() {
-      this.loading = true;
       this.resetResults();
-      this.getResult();
     }
   },
   methods: {
-    getResult() {
-      this.keyword = this.keyword.trim();
-      const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
-      Axios.get(api_url,
-          {
-            params: {
-              legislature: this.filter_legislature,
-              sort : this.sort
-            }
-          }).then(
-          (response) => {
-            this.results = response.data.data;
-            this.result_count = response.data.pagination.total;
-            this.loading = false;
-            if (response.data.count == 0) {
-              this.show_no_result = true;
-            }
-          },
-          (error) => {
-            this.error = error;
-          }
-      );
-    },
     search() {
       this.$router.push({ 
         name: 'search', 
@@ -183,9 +156,7 @@ export default {
           keyword: this.keyword
         } 
       });
-      this.loading = true;
       this.resetResults();
-      this.getResult();
     },
     resetResults() {
       this.results = [];
@@ -208,6 +179,7 @@ export default {
         (response) => {
           if (response.data.data.length) {
             this.page += 1;
+            this.result_count = response.data.pagination.total;
             this.results.push(...response.data.data);
             $state.loaded();
           } else {
