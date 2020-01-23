@@ -81,7 +81,12 @@
                 <span>{{ result.date.org_txt }}</span>
               </p>
               <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
-                <h5 class="title">{{ result.title }}</h5>
+                <h5 class="title" v-if="result.sitting_day">
+                  {{ termName(result.term) }} <br/>
+                  {{ sessionName(result.session) }}<br/>
+                  {{ sittingDayName(result.sitting_day) }}
+                </h5>
+                <h5 class="title" v-else>{{ result.title }}</h5>
               </router-link>
           </div>  
       </div>
@@ -100,6 +105,7 @@ import {Jumper} from 'vue-loading-spinner'
 import Browse from '@/components/Browse.vue'
 import InfiniteLoading from 'vue-infinite-loading'
 import SiteFooter from '@/components/partials/Footer'
+import MeetingNames from '@/helpers/MeetingNames.js'
 
 export default {
   name: 'Home',
@@ -200,6 +206,15 @@ export default {
       } else {
         return 'mdl-chip mdl-color--orange';
       }
+    },
+    termName(val) {
+      return MeetingNames.term(val);
+    },
+    sessionName(val) {
+      return MeetingNames.session(val);
+    },
+    sittingDayName(val) {
+      return MeetingNames.sittingDay(val);
     }
   }
 }

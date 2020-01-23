@@ -16,7 +16,9 @@
                 <span>{{ result.date.org_txt }}</span>
               </p>
               <router-link :to="{ name: 'transcript', params: { id: result._id }}">
-                <h5 class="title">{{ result.title }}</h5>
+                <h5 class="title" v-if="result.sitting_day">
+                {{ sittingDayName(result.sitting_day) }}</h5>
+                <h5 class="title" v-else>{{ result.title }}</h5>
               </router-link>
             </div>  
         </div>
@@ -70,11 +72,14 @@ export default {
                 this.error = error;
               }
           );
+        },
+        sittingDayName(val) {
+          return MeetingNames.sittingDay(val);
         }
     },
     computed: {
         pageTitle() {
-            return MeetingNames.term(this.term) + " " + MeetingNames.legislature(this.legislature) + " " + MeetingNames.session(this.session);
+            return MeetingNames.legislature(this.legislature) + " " + MeetingNames.term(this.term) + " " + MeetingNames.session(this.session);
         }
     }
 }
