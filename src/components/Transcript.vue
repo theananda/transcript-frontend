@@ -6,13 +6,13 @@
               v-if="$routerHistory.hasPrevious()"
               :to="{ path: $routerHistory.previous().path }">
               <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
-              Back to all results
+              ရှာဖွေတွေ့ရှိမှု အားလုံးသို့ပြန်သွားရန်
           </router-link>
           <router-link
             v-else
             :to="backLink">
             <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
-            Back to all results
+            ရှာဖွေတွေ့ရှိမှု အားလုံးသို့ပြန်သွားရန်
           </router-link>
           <!-- Add spacer, to align navigation to the right --> 
           <div class="mdl-layout-spacer"></div>
@@ -27,7 +27,7 @@
            <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--12-col">
                 <div class="keyword_warpper mdl-shadow--2dp" v-if="keyword">
-                  Keyword : <strong>{{ keyword }}</strong> {{ showPosition }}/{{ keywordCount }}
+                  ရှာဖွေထားသောစကားလုံး : <strong>{{ keyword }}</strong> {{ showPosition }}/{{ keywordCount }}
                   <button class="mdl-button mdl-js-button mdl-button--icon keyword_navigator up" v-on:click="goToResults('up')" :disabled="jump_position == -1">
                     <iconify-icon data-icon="mdi:chevron-up" width="1.5rem" height="1.5rem"></iconify-icon>
                   </button>

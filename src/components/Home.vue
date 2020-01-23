@@ -4,7 +4,7 @@
       <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
       <div class="alpha_label">[ Alpha Version ]</div>
       <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">Search</button> 
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">ရှာဖွေပါ</button> 
       <div class="alpha">ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။</div>
       <div class="error">
         <span class="mdl-chip mdl-color--red" v-if="error">
@@ -19,11 +19,11 @@
     <browse v-if="this.$route.name == 'browse'"/>
     <div class="mdl-grid" v-if="this.$route.name == 'search'">
       <div class="mdl-cell mdl-cell--12-col">
-        <div class="results_wrapper">Search Keyword : {{keyword}}</div>
-        <div class="results_count">Results : {{ result_count }}</div>
+        <div class="results_wrapper">ရှာဖွေထားသောစကားလုံး - <strong>{{keyword}}</strong></div>
+        <div class="results_count">ရှာဖွေတွေ့ရှိမှုအရေအတွက် - {{ result_count }}</div>
       </div>
       <div class="mdl-cell mdl-cell--6-col fiter_sort_wrapper">
-        Filter Results : 
+        ရှာဖွေတွေ့ရှိမှုများကို စီစစ်ရန် - 
         <div class="mdl-textfield mdl-js-textfield">
             <select class="mdl-textfield__input" v-model="filter_legislature">
               <option v-for="(name, value) in legislatures" :value=value>{{ name }}</option>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="mdl-cell mdl-cell--6-col fiter_sort_wrapper">
-        Sort by : 
+        ရှာဖွေတွေ့ရှိမှုများ စီစဥ်ပုံ - 
         <div class="mdl-textfield mdl-js-textfield">
             <select class="mdl-textfield__input" v-model="sort">
               <option v-for="(name, value) in sort_options" :value=value>{{ name }}</option>
@@ -195,7 +195,7 @@ export default {
       if (key == 'upper') {
         return 'mdl-chip mdl-color--yellow';
       } else {
-        return 'mdl-chip mdl-color--amber';
+        return 'mdl-chip mdl-color--orange';
       }
     }
   }
