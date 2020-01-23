@@ -47,7 +47,7 @@
               </span>
               <p class="date-info">
                 <iconify-icon data-icon="mdi:calendar" width="1.5rem" height="1.5rem"></iconify-icon>
-                <span>{{ result.date }}</span>
+                <span>{{ result.date.org_txt }}</span>
               </p>
               <router-link :to="{ name: 'search_transcript', params: { id: result._id, keyword: keyword }}">
                 <h5 class="title">{{ result.title }}</h5>
