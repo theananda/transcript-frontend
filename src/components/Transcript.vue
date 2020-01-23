@@ -14,6 +14,12 @@
             <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
             Back to all results
           </router-link>
+          <!-- Add spacer, to align navigation to the right --> 
+          <div class="mdl-layout-spacer"></div>
+          <a :href="downloadLink" target="_blank">
+            <iconify-icon data-icon="mdi:file-download" width="1.5rem" height="1.5rem"></iconify-icon> 
+            <span class="mdl-layout--large-screen-only">မူရင်းအစည်းအဝေးမှတ်တမ်းဖိုင်ရယူရန်</span>
+          </a>
         </div>
       </header>
       <main class="mdl-layout__content transcript_page">
@@ -130,6 +136,9 @@ export default {
       },
       showPosition() {
         return this.jump_position + 1;
+      },
+      downloadLink() {
+        return config.pdf_download_source + this.data.legislature + '/' + this.data.term + '/' + this.data.session + '/' + this.data.pdf_filename;
       }
     },
     /*filters: {
