@@ -40,7 +40,10 @@
                     <spinner v-if="loading"></spinner>
                     <h1 class="center-title">{{ this.data.title }}</h1>
                     <div class="transcript_wrapper" v-html=this.data.preface></div>
-                    <div class="transcript_wrapper" id="transcript_contents" v-html=transcriptText></div>
+                    <div class="transcript_wrapper" id="transcript_contents" v-for="section in transcriptText">
+                      <h1>{{ section.type }}</h1>
+                      <div class="transcript_section" v-html="section.content"></div>
+                    </div>
                     <div class="transcript_wrapper" v-html=this.data.postface></div>
                </div>
            </div>
@@ -67,7 +70,9 @@ export default {
     data() {
         return {
             id : this.$route.params.id,
-            data: {},
+            data: {
+              transcript: []
+            },
             keyword: this.$route.params.keyword,
             loading: true,
             jump_position: -1,
@@ -110,6 +115,9 @@ export default {
           this.current_selector.scrollIntoView({behavior: "smooth", block: "center"});
 
         }
+        /*getHighlightedText(text) {
+          return searchTextHl.highlight(text, this.keyword);
+        }*/
     },
     computed: {
       backLink() {
@@ -120,19 +128,32 @@ export default {
         }
       },
       transcriptText() {
-        const transcript = this.data.transcript;
 
         if (this.keyword) {
-          const query = this.keyword;
 
-          var result = searchTextHl.highlight(transcript, query);
+          var result = this.data.transcript.map(section => {
+
+            section.content = searchTextHl.highlight(section.content, this.keyword);
+
+            return section;
+
+          });
 
           return result;  
         }
-        return transcript;
+
+        return this.data.transcript;
+
       },
       keywordCount() {
-        return (this.transcriptText.match(/text-highlight/g) || []).length;
+        //need to search for highlighted text count
+        var keyCount = 0;
+
+        for (var i = 0; i < this.transcriptText.length; i++) {
+          keyCount += (this.transcriptText[i].content.match(/text-highlight/g) || []).length; 
+        }
+        
+        return keyCount;
       },
       showPosition() {
         return this.jump_position + 1;
