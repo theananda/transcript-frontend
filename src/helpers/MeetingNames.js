@@ -2,16 +2,22 @@ export default {
     legislature (val) {
         const values = {
             'upper' : 'အမျိုးသားလွှတ်တော်',
-            'lower' : 'ပြည်သူ့လွှတ်တော်'
+            'lower' : 'ပြည်သူ့လွှတ်တော်',
+            'union' : 'ပြည်ထောင်စုလွှတ်တော်'
         }
 
         return values[val];
     },
     term (val) {
-        const values = {
-            2 : 'ဒုတိယလွှတ်တော်သက်တမ်း'
+        if (val <= 10) {
+
+            return this.sequence(val) + 'လွှတ်တော်သက်တမ်း';
+
+        } else {
+
+            return '('+ this.transformNumbers(val) +')ကြိမ်မြောက်လွှတ်တော်သက်တမ်း';
+            
         }
-        return values[val];
     },
     session (val) {
         if (val <= 10) {

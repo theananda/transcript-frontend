@@ -222,6 +222,10 @@ ul {
   	h5 {
   		font-size: 1.1rem;
   	}
+
+    .mdl-layout--large-screen-only {
+      display:none;
+    }
   
 }
 

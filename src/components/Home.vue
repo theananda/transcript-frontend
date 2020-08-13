@@ -55,9 +55,14 @@
       </div>
       <div class="mdl-cell mdl-cell--6-col fiter_sort_wrapper">
         ရှာဖွေတွေ့ရှိမှုများကို စီစစ်ရန် - 
-        <div class="mdl-textfield mdl-js-textfield">
+        <div class="mdl-textfield mdl-js-textfield" style="margin-right:20px;">
             <select class="mdl-textfield__input" v-model="filter_legislature">
               <option v-for="(name, value) in legislatures" :value=value>{{ name }}</option>
+            </select>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield">
+            <select class="mdl-textfield__input" v-model="filter_content_type">
+              <option v-for="(name, value) in content_types" :value=value>{{ name }}</option>
             </select>
         </div>
       </div>
@@ -88,6 +93,11 @@
                 </h5>
                 <h5 class="title" v-else>{{ result.title }}</h5>
               </router-link>
+              <div class="content_type_wrapper">
+                <span class="mdl-chip" v-for="type in result.content_types" style="width:fit-content; margin-right:10px;">
+                    <span class="mdl-chip__text">{{ type }}</span>
+                </span>
+              </div>
           </div>  
       </div>
       <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler"></infinite-loading>
@@ -126,6 +136,7 @@ export default {
       show_no_result: false,
       page: 1,
       filter_legislature : 'all',
+      filter_content_type : 'all',
       sort : 'score',
       legislatures : {
         'all' : 'လွှတ်တော်အားလုံး',
@@ -135,6 +146,15 @@ export default {
       sort_options : {
         'score' : 'ရှာဖွေတွေ့ရှိမှုအရေအတွက်',
         'latest' : 'နောက်ဆုံးအစည်းအဝေးမှတ်တမ်း'
+      },
+      content_types : {
+        'all' : 'ဆွေးနွေးမှုအားလုံး',
+        'QA' : 'မေးခွန်းများ',
+        'Motion' : 'အဆိုတင်သွင်းမှုများ',
+        'Bill' : 'ဥပဒေကြမ်းများ',
+        'Comittee': 'ကော်မတီဖွဲ့စည်းခြင်းများ',
+        'Order' : 'Order',
+        'Report' : 'Report'
       },
       infiniteId: +new Date(),
     }
@@ -151,6 +171,9 @@ export default {
       this.resetResults();
     },
     sort : function() {
+      this.resetResults();
+    },
+    filter_content_type : function() {
       this.resetResults();
     }
   },
@@ -177,6 +200,7 @@ export default {
       const api_url = config.api_url + "/transcripts/search?keyword=" + this.keyword;
       Axios.get(api_url, {
         params: {
+          content_type : this.filter_content_type,
           legislature: this.filter_legislature,
           sort: this.sort,
           page: this.page
