@@ -20,6 +20,11 @@
                 {{ sittingDayName(result.sitting_day) }}</h5>
                 <h5 class="title" v-else>{{ result.title }}</h5>
               </router-link>
+              <div class="content_type_wrapper">
+                <span class="mdl-chip" v-for="type in result.content_types" style="width:fit-content; margin-right:10px;">
+                    <span class="mdl-chip__text">{{ type }}</span>
+                </span>
+              </div>
             </div>  
         </div>
     </div>
