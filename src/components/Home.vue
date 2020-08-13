@@ -8,7 +8,6 @@
                   class="mdl-button mdl-js-button mdl-color-text--white">
             <i class="material-icons mdl-color-text--white">info</i> <span class="mdl-layout--large-screen-only">စီမံကိန်းအကြောင်း</span>
           </button>
-
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
               for="about-menu">
               <li class="mdl-menu__item">
@@ -35,7 +34,7 @@
           ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။ <br/>
           [ယခုဝက်ဘ်ဆိုဒ်တွင် ရရှိနိုင်သော အချက်အလက်များ၏ နောက်ဆုံးအခြေအနေနှင့် မရရှိနိုင်သော အချက်အလက်များအကြောင်းကို 
           <router-link :to="{name:'info'}">အသေးစိတ် လေ့လာရန်။</router-link>]
-</div>
+        </div>
         <div class="error">
           <span class="mdl-chip mdl-color--red" v-if="error">
             <span class="mdl-chip__text mdl-color-text--white">{{ error }}</span>
@@ -141,7 +140,8 @@ export default {
       legislatures : {
         'all' : 'လွှတ်တော်အားလုံး',
         'lower' : 'ပြည်သူ့လွှတ်တော်',
-        'upper' : 'အမျိုးသားလွှတ်တော်'
+        'upper' : 'အမျိုးသားလွှတ်တော်',
+        'union' : 'ပြည်ထောင်စုလွှတ်တော်'
       },
       sort_options : {
         'score' : 'ရှာဖွေတွေ့ရှိမှုအရေအတွက်',
@@ -227,8 +227,10 @@ export default {
     getLegislatureChipClass(key) {
       if (key == 'upper') {
         return 'mdl-chip mdl-color--yellow';
-      } else {
+      } else if (key == 'lower') {
         return 'mdl-chip mdl-color--orange';
+      } else {
+        return 'mdl-chip mdl-color--red';
       }
     },
     termName(val) {
