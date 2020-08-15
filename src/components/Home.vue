@@ -28,8 +28,7 @@
       <div class="jumbotron-wrapper">
         <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
         <div class="alpha_label">[ Beta Version ]</div>
-        <input type="text" name="search" id="keyword_search" v-model="keyword" @keyup.enter="search"> 
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" v-on:click="search">ရှာဖွေပါ</button> 
+        <mp-search @keyword="getKeyword" />
         <div class="alpha">
           ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။ <br/>
           [ယခုဝက်ဘ်ဆိုဒ်တွင် ရရှိနိုင်သော အချက်အလက်များ၏ နောက်ဆုံးအခြေအနေနှင့် မရရှိနိုင်သော အချက်အလက်များအကြောင်းကို 
@@ -115,6 +114,7 @@ import Browse from '@/components/Browse.vue'
 import InfiniteLoading from 'vue-infinite-loading'
 import SiteFooter from '@/components/partials/Footer'
 import MeetingNames from '@/helpers/MeetingNames.js'
+import MPSearch from '@/components/partials/MPSearch'
 
 export default {
   name: 'Home',
@@ -123,7 +123,8 @@ export default {
     'browse' : Browse,
     'infinite-loading' : InfiniteLoading,
     'legislature' : ByLegislature,
-    'site-footer' : SiteFooter
+    'site-footer' : SiteFooter,
+    'mp-search' : MPSearch
   },
   data () {
     return {
@@ -178,6 +179,9 @@ export default {
     }
   },
   methods: {
+    getKeyword : function(params) {
+      this.keyword = params;
+    },
     search() {
       this.$router.push({ 
         name: 'search', 

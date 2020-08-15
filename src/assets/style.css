@@ -71,6 +71,14 @@ ul {
 	text-align: center;
 }
 
+.mp-info-wrapper {
+  text-align: center;
+  background: #ff6e40;
+  color: #fff !important;
+  padding: 20px;
+
+}
+
 .mdl-layout__header-row {
 	padding-left: 2rem;
 }
@@ -123,7 +131,7 @@ ul {
 }
 
 .large_search_area .jumbotron-wrapper {
-  padding: 100px 0px;
+  padding: 70px 0px;
 }
 
 .large_search_area h2 {
@@ -142,11 +150,10 @@ ul {
   z-index: -1;
 }
 
-.large_search_area #keyword_search {
-	width: 60%;
+.large_search_area #autosuggest__input {
+	width: 100%;
 	height: 30px;
 	boarder: 0px;
-	margin: 15px;
 	z-index: 1;
   font-family: 'NotoSan';
 }

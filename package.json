@@ -13,6 +13,7 @@
     "search-text-highlight": "0.0.4",
     "vue": "^2.6.10",
     "vue-analytics": "^5.18.0",
+    "vue-autosuggest": "^2.2.0",
     "vue-infinite-loading": "^2.4.4",
     "vue-loading-spinner": "^1.0.11",
     "vue-router": "^3.1.3",
