@@ -1,35 +1,6 @@
 <template>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-          <div class="mdl-layout__header-row">
-            <router-link
-              :to="{ name: 'home' }">
-              <iconify-icon data-icon="mdi:arrow-left" width="1.5rem" height="1.5rem"></iconify-icon>
-              မူလစာမျက်နှာသို့ပြန်သွားရန်
-            </router-link>
-            <div class="mdl-layout-spacer"></div>
-            <button id="about-menu"
-                    class="mdl-button mdl-js-button mdl-color-text--orange">
-              <i class="material-icons">info</i> <span class="mdl-layout--large-screen-only">စီမံကိန်းအကြောင်း</span>
-            </button>
-
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                for="about-menu">
-                <li class="mdl-menu__item">
-                    <router-link :to="{ name: 'about' }">စီမံကိန်းအကြောင်း</router-link>
-                </li>
-                <li class="mdl-menu__item">
-                    <router-link :to="{ name: 'info' }">အချက်အလက်ရရှိနိုင်မှု အခြေအနေ</router-link>
-                </li>
-                <li class="mdl-menu__item">
-                    <router-link :to="{ name: 'faq' }">ဝက်ဘ်ဆိုဒ်အသုံးပြုပုံ</router-link>
-                </li>
-                <li class="mdl-menu__item">
-                    <router-link :to="{ name: 'history' }">လွှတ်တော်သမိုင်း မှတ်တမ်း</router-link>
-                </li>
-            </ul>
-          </div>
-        </header>
+        <static-header />
         <main class="mdl-layout__content transcript_page">
             <div class="content_wrapper">
                 <div class="mdl-grid">
@@ -82,11 +53,13 @@
 <script>
 
 import SiteFooter from '@/components/partials/Footer'
+import StaticHeader from '@/components/static_pages/StaticHeader'
 
 export default {
     name: 'About',
     components: {
-      'site-footer' : SiteFooter
+      'site-footer' : SiteFooter,
+      'static-header' : StaticHeader
     },
     data() {
         return {}

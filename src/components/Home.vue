@@ -6,7 +6,7 @@
           <div class="mdl-layout-spacer"></div>
           <button id="about-menu"
                   class="mdl-button mdl-js-button mdl-color-text--white">
-            <i class="material-icons mdl-color-text--white">info</i> <span class="mdl-layout--large-screen-only">စီမံကိန်းအကြောင်း</span>
+            <iconify-icon data-icon="ic:baseline-info" width="1.5rem" height="1.5rem" style="color: #fff;"></iconify-icon> <span class="mdl-layout--large-screen-only">စီမံကိန်းအကြောင်း</span>
           </button>
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
               for="about-menu">
