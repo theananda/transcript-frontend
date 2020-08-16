@@ -27,7 +27,6 @@
       </header>
       <div class="jumbotron-wrapper">
         <h2><router-link :to="{name: 'home'}">လွှတ်တော်အစည်းအဝေး မှတ်တမ်းများ</router-link></h2>
-        <div class="alpha_label">[ Beta Version ]</div>
         <mp-search @keyword="getKeyword" />
         <div class="alpha">
           ယခု website သည် စမ်းသပ်ဆဲကာလဖြစ်သောကြောင့် အဆင်မပြေမှုများရှိပါက တောင်းပန်အပ်ပါသည်။ <br/>
