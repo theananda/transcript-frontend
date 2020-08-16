@@ -7,13 +7,14 @@
                 </div>
                 <div class="mdl-cell mdl-cell--12-col">
                     <div class="term_wrapper" v-for="term in meeting.terms" v-bind:key="term.number">
-                        <h4>{{ getMeetingName('term', term.number) }}</h4>
+                        <h5>{{ getMeetingName('term', term.number) }}</h5>
                         <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--4-col" v-for="session in term.sessions" v-bind:key="session">
+                            <div class="mdl-cell mdl-cell--4-col session-link" v-for="session in term.sessions" v-bind:key="session">
                                 <router-link :to="{name: 'browse', 
                                                     params: {legislature: meeting.legislature, 
                                                     term: term.number, 
                                                     session: session}}">
+                                    <iconify-icon data-icon="mdi:folder-outline"></iconify-icon>
                                     {{ getMeetingName('session', session) }}
                                 </router-link>
                             </div>      
@@ -102,3 +103,15 @@ export default {
 }
 
 </script>
+
+<style>
+    .session-link a {
+        color: #000;
+    }
+    .legislature_wrapper {
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .legislature_wrapper:last-child {
+        border: 0px;
+    }
+</style>
