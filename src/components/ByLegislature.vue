@@ -67,6 +67,10 @@ export default {
                     legislature: 'union',
                     terms : [
                         {
+                            number: 1, 
+                            sessions: [1,2,3,4,5,6,7,8,9,10,11,12,13]
+                        },
+                        {
                             number: 2,
                             sessions: [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
                         }
